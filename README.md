@@ -1,2 +1,10 @@
 # Banana-Timer
-My own project remaking the iconic Pomodoro Timer. This time with a banana instead of a tomato, all in the name of fruit equality!
+
+## What is this?
+A fun little project to program a Pomodoro timer app. There is a simple command line version for minimalistic, barebones use, as well as a GUI version. It is written in Java, using JavaFX for the GUI.
+
+To learn more about the Pomodoro time management technique, visit here: https://en.wikipedia.org/wiki/Pomodoro_Technique
+
+## Command-Line Version
+
+## GUI Version
