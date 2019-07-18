@@ -12,7 +12,7 @@ class BananaTimerCli {
 		assert args.length <= 4; // only for testing, in use: extra arguments will be ignored.
 		for (int i = 0; i < args.length; i++) {
 			if (Integer.parseInt(args[i]) <= 0) {
-				throw new java.lang.IllegalArgumentException("Illegal arguments. The program parameters should be greater than 0. Try again.");
+				throw new java.lang.IllegalArgumentException("Illegal argument(s). The program parameters should be greater than 0. Try again.");
 			}
 		}
 
@@ -25,6 +25,11 @@ class BananaTimerCli {
 			else if (i == 1) numOfSessions = parameter;
 			else if (i == 2) shortBreak = parameter;
 			else if (i == 3) longBreak = parameter;
+		}
+
+		// small exception that should not pass
+		if (numOfSessions <= 1) {
+			throw new java.lang.IllegalArgumentException("Illegal argument for the number of sessions. Please select a value greater than 1.");
 		}
 
 		
