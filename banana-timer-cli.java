@@ -56,6 +56,19 @@ class BananaTimerCli {
 	}
 
 	public static void setTimer(int timeInMin) {
-		System.out.println(timeInMin);
+		long startTime = System.currentTimeMillis();
+
+		while (true) {
+			long elapsedTime = System.currentTimeMillis() - startTime;
+			long elapsedSeconds = elapsedTime / 1000;
+			
+			int elapsedMinutesDisplay = timeInMin - (int) (elapsedSeconds / 60);
+			int elapsedSecondsDisplay = 60 - (int) (elapsedSeconds % 60);
+
+			if (elapsedMinutesDisplay < 0) break;
+			else {
+				System.out.println(elapsedMinutesDisplay + ":" + elapsedSecondsDisplay);
+			}
+		}
 	}
 }
