@@ -36,7 +36,7 @@ class BananaTimerCli {
 		while (true) {
 			for (int i = 1; i <= numOfSessions; i++) {
 				System.out.println("SESSION IN PROGRESS(" + i + "/" + numOfSessions + ")");
-				System.out.println("-------------------");
+				System.out.println("-------------------------");
 				setTimer(sessionLength);
 				// play a sound
 				if (i < numOfSessions) {
@@ -59,15 +59,30 @@ class BananaTimerCli {
 		long startTime = System.currentTimeMillis();
 
 		while (true) {
+
 			long elapsedTime = System.currentTimeMillis() - startTime;
 			long elapsedSeconds = elapsedTime / 1000;
 			
-			int elapsedMinutesDisplay = timeInMin - (int) (elapsedSeconds / 60);
-			int elapsedSecondsDisplay = 60 - (int) (elapsedSeconds % 60);
+			int MinutesDisplay = timeInMin - (int) (elapsedSeconds / 60) - 1;
+			int SecondsDisplay = 60 - (int) (elapsedSeconds % 60);
 
-			if (elapsedMinutesDisplay < 0) break;
+			// code for fixing small bug where second is displayed as 60 incorrectly
+			if (SecondsDisplay == 60) {
+				SecondsDisplay = 0;
+				MinutesDisplay++;
+			}
+
+			if (MinutesDisplay < 0) break;
 			else {
-				System.out.println(elapsedMinutesDisplay + ":" + elapsedSecondsDisplay);
+				System.out.println(String.format("%02d", MinutesDisplay) + ":" + String.format("%02d", SecondsDisplay));
+			}
+
+			// pause the program and delay since we're updating only by seconds
+			try {
+				Thread.sleep(1000);
+			}
+			catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 	}
