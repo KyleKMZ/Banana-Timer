@@ -1,5 +1,5 @@
 class BananaTimerCli {
-	
+					
 	public static void main(String[] args) {
 		
 		// initialize program parameters with their default values
@@ -32,8 +32,30 @@ class BananaTimerCli {
 			throw new java.lang.IllegalArgumentException("Illegal argument for the number of sessions. Please select a value greater than 1.");
 		}
 
-		
+		// main program starts here
+		while (true) {
+			for (int i = 1; i <= numOfSessions; i++) {
+				System.out.println("SESSION IN PROGRESS(" + i + "/" + numOfSessions + ")");
+				System.out.println("-------------------");
+				setTimer(sessionLength);
+				// play a sound
+				if (i < numOfSessions) {
+					System.out.println("SHORT BREAK");
+					System.out.println("-----------");
+					setTimer(shortBreak);
+					// play a sound
+				}
+				else {
+					System.out.println("LONG BREAK");
+					System.out.println("----------");
+					setTimer(longBreak);
+					// play a sound
+				}
+			}
+		}
+	}
 
-
+	public static void setTimer(int timeInMin) {
+		System.out.println(timeInMin);
 	}
 }
