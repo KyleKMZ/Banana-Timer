@@ -6,9 +6,9 @@ A fun little project to program a Pomodoro timer app. There is a simple command 
 To learn more about the Pomodoro time management technique, visit here: https://en.wikipedia.org/wiki/Pomodoro_Technique
 
 ## Command-Line Version
-To run the program with default settings(Session length: 25min, Number of sessions: 4, Short break: 5min, Long break: 30min), simply run the program.
+To run the program with default settings(Session length: 25min, Number of sessions: 4, Short break: 5min, Long break: 30min), simply run the program like this:
 
-`java banana-timer-cli`
+	java banana-timer-cli
 
 Command-line arguments can be given in this order to personalize usage: 
 1. Session length
