@@ -1,3 +1,8 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
+
 class BananaTimerCli {
 					
 	public static void main(String[] args) {
@@ -9,7 +14,7 @@ class BananaTimerCli {
 		int longBreak = 30;
 
 		// test for user input errors - none of the program parameters, if given, should be 0 or less than 0
-		assert args.length <= 4; // only for testing, in use: extra arguments will be ignored.
+		assert args.length <= 4; // only for testing, in use: extra arguments are ignored.
 		for (int i = 0; i < args.length; i++) {
 			if (Integer.parseInt(args[i]) <= 0) {
 				throw new java.lang.IllegalArgumentException("Illegal argument(s). The program parameters should be greater than 0. Try again.");
@@ -39,7 +44,7 @@ class BananaTimerCli {
 				System.out.println("SESSION IN PROGRESS(" + i + "/" + numOfSessions + ")");
 				System.out.println("-------------------------");
 				setTimer(sessionLength);
-				// play a sound
+				playAlarm();
 				System.out.println("");
 				System.out.println("SESSION COMPLETE. CONGRATULATIONS!");
 				if (i < numOfSessions) {
@@ -47,7 +52,7 @@ class BananaTimerCli {
 					System.out.println("SHORT BREAK");
 					System.out.println("-----------");
 					setTimer(shortBreak);
-					// play a sound
+					playAlarm();
 					System.out.println("");
 					System.out.println("BREAK TIME OVER. GET BACK TO WORK!");
 				}
@@ -56,7 +61,7 @@ class BananaTimerCli {
 					System.out.println("LONG BREAK");
 					System.out.println("----------");
 					setTimer(longBreak);
-					// play a sound
+					playAlarm();
 					System.out.println("");
 					System.out.println("BREAK TIME OVER. GET BACK TO WORK!");
 				}
@@ -64,7 +69,7 @@ class BananaTimerCli {
 		}
 	}
 
-	public static void setTimer(int timeInMin) {
+	private static void setTimer(int timeInMin) {
 		long startTime = System.currentTimeMillis();
 
 		while (true) {
@@ -94,5 +99,18 @@ class BananaTimerCli {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private static void playAlarm() {
+		try {
+        	AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("alarm.wav").getAbsoluteFile());
+        	Clip clip = AudioSystem.getClip();
+        	clip.open(audioInputStream);
+        	clip.start();
+	    } catch(Exception ex) {
+	        System.out.println("Error with playing sound.");
+	        ex.printStackTrace();
+    	}
+
 	}
 }
