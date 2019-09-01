@@ -1,11 +1,11 @@
 # Banana-Timer
 
 ## What is this?
-A fun little project to program a Pomodoro timer app. There is a simple command line version for minimalistic, barebones use as well as a GUI version. It is written in Java, using JavaFX for the GUI.
+A fun little project to program a Pomodoro timer app. This is a simple command line version for minimalistic, barebones use.
 
 To learn more about the Pomodoro time management technique, visit here: https://en.wikipedia.org/wiki/Pomodoro_Technique
 
-## Command-Line Version
+## Command-Line Arguments
 To run the program with default settings(Session length: 25min, Number of sessions: 4, Short break: 5min, Long break: 30min), simply run the program like this:
 
 	java BananaTimerCli
@@ -41,5 +41,3 @@ Below are a few example usages.
 * **4** sessions of **30** min each
 * Short break: **7** min
 * Long break: **20** min
-
-## GUI Version
